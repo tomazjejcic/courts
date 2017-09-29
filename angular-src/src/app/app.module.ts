@@ -1,7 +1,14 @@
+// Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
+// Services
+import { ValidateService } from './services/validate.service';
+
+// Copmonents
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
@@ -30,9 +37,13 @@ const appRoutes: Routes = [
     ],
     imports: [
         BrowserModule,
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes),
+        FormsModule,
+        FlashMessagesModule
     ],
-    providers: [],
+    providers: [
+        ValidateService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

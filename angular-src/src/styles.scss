@@ -2,6 +2,13 @@
 @import "assets/bootstrap-sass/variables";
 @import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap';
 
-// body {
-//     background: lightblue;
-// }
+// colors
+$blue:              #094662;
+$green:             #9FDA3F;
+$white:             #E7E7EF;
+
+body {
+    background: $blue;
+    color: $green;
+}
+

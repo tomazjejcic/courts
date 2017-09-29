@@ -1,4 +1,4 @@
-# meanauthapp
+# Courts
 
 ### Installing project locally
 ```bash
