@@ -1,12 +1,14 @@
 // Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
 // Services
 import { ValidateService } from './services/validate.service';
+import { AuthService } from './services/auth.service';
 
 // Copmonents
 import { AppComponent } from './app.component';
@@ -38,11 +40,13 @@ const appRoutes: Routes = [
     imports: [
         BrowserModule,
         RouterModule.forRoot(appRoutes),
+        HttpModule,
         FormsModule,
         FlashMessagesModule
     ],
     providers: [
-        ValidateService
+        ValidateService,
+        AuthService
     ],
     bootstrap: [AppComponent]
 })
