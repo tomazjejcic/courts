@@ -4,6 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
+const Courts = require('../models/courts');
 
 // Register
 router.post('/register', (req, res, next) => {
@@ -59,8 +60,21 @@ router.post('/authenticate', (req, res, next) => {
 
 // Profile
 router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-    // res.send('PROFILE');
+    
     res.json({user: req.user});
 });
+
+// Dashboard
+router.get('/dashboard', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+
+    Courts.findCourts( (err, courts) => {
+
+        if (err) {
+            res.json({success: false, msg: 'Failed to retrieve courts, Error: ', err});
+        } else {
+            return res.json(courts);        
+        }
+    });
+})
 
 module.exports = router;

@@ -1,0 +1,78 @@
+{
+    "court_id": "000001",
+    "court_name": "Park Kodeljevo",
+    "address": {
+        "city": "Ljubjana",
+        "district": ["Moste", "Kodeljevo"],
+        "street": "Koširjeva ulica 3",
+        "note": "in vicinity of the street",
+        "coord": [46.051044, 14.530272]
+    },
+    "data": {
+        "description": null,
+        "photo": null,
+        "rating": null,
+        "condition": null,
+        "popularity": null,
+        "access": "free",
+        "outdoor": "yes",
+        "indoor": null,
+        "hoops_num": {
+            "total": 6,
+            "individual": 2,
+            "shared": 4
+        }
+    }
+},
+{
+    "court_id": "000002",
+    "court_name": "Študentski domovi Rožna dolina",
+    "address": {
+        "city": "Ljubjana",
+        "district": ["Rožna dolina"],
+        "street": "Svetčeva 9",
+        "note": "between dormitory building 11 and 3",
+        "coord": [46.051680, 14.488907]
+    },
+    "data": {
+        "description": null,
+        "photo": null,
+        "rating": null,
+        "condition": null,
+        "popularity": "high",
+        "access": "free",
+        "outdoor": "yes",
+        "indoor": null,
+        "hoops_num": {
+            "total": 4,
+            "individual": 0,
+            "shared": 4
+        }
+    }
+},
+{
+    "court_id": "000003",
+    "court_name": "Mestni log",
+    "address": {
+        "city": "Ljubjana",
+        "district": ["Vič", "Trnovo"],
+        "street": "Gerbičeva ulica 51a",
+        "note": "in vicinity of dormitory no. 2",
+        "coord": [46.038120, 14.487301]
+    },
+    "data": {
+        "description": null,
+        "photo": null,
+        "rating": null,
+        "condition": null,
+        "popularity": null,
+        "access": "free",
+        "outdoor": "yes",
+        "indoor": null,
+        "hoops_num": {
+            "total": 2,
+            "individual": 2,
+            "shared": 0
+        }
+    }
+}

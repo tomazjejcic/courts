@@ -2,3 +2,9 @@
 <p>
   Welcome Dashboard
 </p>
+
+<div *ngIf="courts">
+    <div *ngFor="let court of courts">
+        {{ court.court_name }}
+    </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-    constructor() { }
+    courts: any;
+
+    constructor(
+        private authService: AuthService
+    ) { }
 
     ngOnInit() {
+        this.getCourtsData();
     }
 
+    getCourtsData() {
+        this.authService.getCourts().subscribe(data => {
+            console.log('THE DATA: ', data);
+            this.courts = data;
+        },
+        err => {
+            console.log(err);
+            return false;
+        })
+    }
 }
