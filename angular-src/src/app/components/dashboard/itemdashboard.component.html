@@ -1,0 +1,18 @@
+<div class="panel panel-primary">
+
+    <app-event-modal #eventModal [item]="courtItem">
+    </app-event-modal>
+
+    <div class="panel-heading">
+        <h3 class="panel-title">{{ courtItem.court_name }}</h3>
+    </div>
+    <div class="panel-body">
+        <p>District: {{ courtItem.address.district[0] }}</p>
+        <p>Street: {{ courtItem.address.street }}</p>
+        <div class="separator">
+        </div>
+        <div class="button-container">
+            <a (click)="showModal()" class="btn btn-default">Create Timeslot</a>
+        </div>
+    </div>
+</div>

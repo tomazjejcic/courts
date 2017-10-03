@@ -15,10 +15,12 @@ export class DashboardComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+
         this.getCourtsData();
     }
 
     getCourtsData() {
+
         this.authService.getCourts().subscribe(data => {
             console.log('THE DATA: ', data);
             this.courts = data;

@@ -1,10 +1,7 @@
 <h2 class="page-header">Dashboard</h2>
-<p>
-  Welcome Dashboard
-</p>
 
 <div *ngIf="courts">
-    <div *ngFor="let court of courts">
-        {{ court.court_name }}
-    </div>
+    <app-itemdashboard *ngFor="let court of courts"
+        [courtItem]="court">
+    </app-itemdashboard>
 </div>

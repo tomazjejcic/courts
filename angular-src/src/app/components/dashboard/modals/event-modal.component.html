@@ -1,0 +1,37 @@
+<div class="modal fade" 
+    tabindex="-1" [ngClass]="{'in': visibleAnimate}"
+    [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" aria-hidden="true" (click)="hide()">&times;</button>
+                <h4 class="modal-title">{{ item.court_name }}</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" (submit)="onFormSubmit()" id="event-form">
+                    <fieldset>
+                        <!-- <legend>Legend</legend> -->
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-lg-2 control-label">Test</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" [(ngModel)]="testform" name="testform" placeholder="Test Form">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" [(ngModel)]="inputEmail" name="inputEmail" placeholder="Email">
+                            </div>
+                        </div>
+                        <!-- <input type="submit" class="btn btn-primary" value="Submit"> -->
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="hide()">Close</button>
+                <!-- <input type="submit" class="btn btn-primary" value="Submit"> -->
+                <button type="submit" form="event-form" class="btn btn-primary" value="Submit" (click)="hide()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
