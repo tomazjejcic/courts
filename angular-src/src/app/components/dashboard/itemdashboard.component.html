@@ -11,6 +11,9 @@
         <p>Street: {{ courtItem.address.street }}</p>
         <div class="separator">
         </div>
+        <div *ngFor="let event of courtItem.events">
+            <div>{{ event.date }} {{ event.hour }}</div>
+        </div>
         <div class="button-container">
             <a (click)="showModal()" class="btn btn-default">Create Timeslot</a>
         </div>

@@ -22,7 +22,8 @@
             "individual": 2,
             "shared": 4
         }
-    }
+    },
+    "events": []
 },
 {
     "court_id": "000002",
@@ -48,7 +49,17 @@
             "individual": 0,
             "shared": 4
         }
-    }
+    },
+    "events": [
+        {
+            "date": "today",
+            "hour": "one"
+        },
+        {
+            "date": "tomorrow",
+            "hour": "two"
+        }
+    ]
 },
 {
     "court_id": "000003",
@@ -74,5 +85,6 @@
             "individual": 2,
             "shared": 0
         }
-    }
+    },
+    "events": []
 }

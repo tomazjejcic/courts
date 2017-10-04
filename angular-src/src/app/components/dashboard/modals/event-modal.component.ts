@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { DashboardService } from '../../../services/dashboard.service';
 
 @Component({
     selector: 'app-event-modal',
@@ -12,11 +13,12 @@ export class EventModalComponent implements OnInit {
 
     inputEmail;
     testform;
+    // eventId;
 
     @Input() item: any;
 
     constructor(
-
+        private dashboardService: DashboardService
     ) {
 
     }
@@ -24,12 +26,16 @@ export class EventModalComponent implements OnInit {
     ngOnInit() {
 
         console.log('THE ITEM: ', this.item);
+        // this.formId = this.item._id; // otherwise is a mess??
     }
 
     public show(): void {
 
+        // this.eventId = this.item._id; // otherwise is a mess??
         this.visible = true;
         setTimeout(() => this.visibleAnimate = true, 100);
+        console.log('MODAL Item: ', this.item);
+        // console.log('MODAL Item ID ID: ', this.eventId);
     }
 
     public hide(): void {
@@ -40,12 +46,24 @@ export class EventModalComponent implements OnInit {
 
     onFormSubmit() {
 
-        const filledForm = {
-            filedOne: this.inputEmail,
-            filedTwo: this.testform,
+        const eventObject = {
+            // _id: this.eventId,
+            _id: this.item._id,
+            date: this.testform,
+            hour: this.inputEmail,
         }
 
-        console.log('FORM SUBMITTED', filledForm);
+        console.log('Filled OBJECT: ', eventObject);
+
+        this.dashboardService.addEvent((eventObject)).subscribe( data => {
+            if (data.ok) {
+                console.log('THE DATA', data);
+            } else {
+                console.log('Error on button', data);
+            }
+        })
+
+        // console.log('FORM SUBMITTED', filledForm);
     }
 
     // TODO:

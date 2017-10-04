@@ -77,4 +77,22 @@ router.get('/dashboard', passport.authenticate('jwt', {session: false}), (req, r
     });
 })
 
+router.post('/addevent', (req, res, next) => {
+
+    const eventObject = req.body;
+    console.log('eventObject in post: ', eventObject);
+
+    Courts.addEvent(eventObject, (err, neki) => {
+        if (err) {
+            console.log('The event ERROR', err);
+            res.json({success: false, msg: 'Failed to ADD EVENT, Error: ', err});
+        } else {
+            console.log('The event in users.js post to /addevent', neki);
+            return res.json(neki);        
+        }
+
+    })
+
+});
+
 module.exports = router;

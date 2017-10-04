@@ -9,6 +9,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 // Services
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
+import { DashboardService } from './services/dashboard.service';
 import { AuthGuard } from './guards/auth.guard';
 
 // Copmonents
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     providers: [
         ValidateService,
         AuthService,
+        DashboardService,
         AuthGuard
     ],
     bootstrap: [AppComponent]

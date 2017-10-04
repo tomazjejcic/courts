@@ -38,16 +38,6 @@ export class AuthService {
             .map(res => res.json());
     }
 
-    // get courts in dashboard
-    getCourts() {
-        const headers = new Headers();
-        this.loadToken();
-        headers.append('Authorization', this.authToken);
-        headers.append('Content-Type', 'application/json');
-        return this.http.get('http://localhost:3000/users/dashboard', {headers: headers})
-            .map(res => res.json());
-    }
-
     // store user on successful loggin
     storeUserData(token, user) {
         localStorage.setItem('id_token', token);
