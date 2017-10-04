@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { EventModalComponent } from './modals/event-modal.component';
+import { EventModalComponent } from '../components/event-modal.component';
 
 @Component({
     selector: 'app-itemdashboard',
@@ -11,6 +11,8 @@ export class ItemdashboardComponent implements OnInit {
     @ViewChild('eventModal') eventModal: EventModalComponent;
 
     @Input() courtItem: any;
+
+    // Court Events
 
     constructor() { }
 

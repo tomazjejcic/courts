@@ -18,10 +18,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './components/dashboard/components/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { EventModalComponent } from './components/dashboard/modals/event-modal.component';
-import { ItemdashboardComponent } from './components/dashboard/itemdashboard.component';
+import { EventModalComponent } from './components/dashboard/components/event-modal.component';
+import { ItemdashboardComponent } from './components/dashboard/components/itemdashboard.component';
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
