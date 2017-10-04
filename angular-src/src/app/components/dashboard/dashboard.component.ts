@@ -32,20 +32,4 @@ export class DashboardComponent implements OnInit {
             return false;
         })
     }
-
-    pressMe() {
-
-        const eventObject = {
-            date: 'the date',
-            hour: 'the hour'
-        };
-
-        this.dashboardService.addEvent((eventObject)).subscribe( data => {
-            if (data.ok) {
-                console.log('THE DATA', data);
-            } else {
-                console.log('Error on button', data);
-            }
-        })
-    }
 }

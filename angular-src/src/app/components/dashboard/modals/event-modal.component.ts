@@ -13,7 +13,6 @@ export class EventModalComponent implements OnInit {
 
     inputEmail;
     testform;
-    // eventId;
 
     @Input() item: any;
 
@@ -25,17 +24,12 @@ export class EventModalComponent implements OnInit {
 
     ngOnInit() {
 
-        console.log('THE ITEM: ', this.item);
-        // this.formId = this.item._id; // otherwise is a mess??
     }
 
     public show(): void {
 
-        // this.eventId = this.item._id; // otherwise is a mess??
         this.visible = true;
         setTimeout(() => this.visibleAnimate = true, 100);
-        console.log('MODAL Item: ', this.item);
-        // console.log('MODAL Item ID ID: ', this.eventId);
     }
 
     public hide(): void {
@@ -44,26 +38,22 @@ export class EventModalComponent implements OnInit {
         setTimeout(() => this.visible = false, 300);
     }
 
-    onFormSubmit() {
+    submitEvent() {
+        this.hide();
 
         const eventObject = {
-            // _id: this.eventId,
             _id: this.item._id,
             date: this.testform,
             hour: this.inputEmail,
         }
 
-        console.log('Filled OBJECT: ', eventObject);
-
         this.dashboardService.addEvent((eventObject)).subscribe( data => {
-            if (data.ok) {
-                console.log('THE DATA', data);
+            if (data.ok && data.n && data.nModified) {
+                console.log('New event created', data);
             } else {
-                console.log('Error on button', data);
+                console.log('Failed to create event', data);
             }
         })
-
-        // console.log('FORM SUBMITTED', filledForm);
     }
 
     // TODO:

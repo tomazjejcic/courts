@@ -16,7 +16,6 @@ export class ItemdashboardComponent implements OnInit {
 
     ngOnInit() {
 
-        // console.log('Court Item: ', this.courtItem);
     }
 
     showModal() {
