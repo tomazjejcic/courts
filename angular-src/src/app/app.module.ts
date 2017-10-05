@@ -12,6 +12,8 @@ import { AuthService } from './services/auth.service';
 import { DashboardService } from './services/dashboard.service';
 import { AuthGuard } from './guards/auth.guard';
 
+import { DashboardActions, DashboardStore } from './components/dashboard/index';
+
 // Copmonents
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -54,7 +56,9 @@ const appRoutes: Routes = [
         ValidateService,
         AuthService,
         DashboardService,
-        AuthGuard
+        AuthGuard,
+        DashboardActions,
+        DashboardStore
     ],
     bootstrap: [AppComponent]
 })
