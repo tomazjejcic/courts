@@ -45,6 +45,8 @@ export class DashboardStore {
 
         this._dashboardService.getCourts().subscribe( data => {
             console.log('THE DATA from dashboard service in STORE: ', data);
+            // const apiResult = data;
+            // this._courtState.data.courtEvents$.next(apiResult);
             // this.courts = data;
         },
         err => {

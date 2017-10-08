@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
     getCourtsData() {
 
         this.dashboardService.getCourts().subscribe( data => {
-            console.log('THE DATA from dashboard service: ', data);
+            console.log('THE DATA from dashboard service in dashboard component: ', data);
             this.courts = data;
         },
         err => {

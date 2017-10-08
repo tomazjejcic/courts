@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { DashboardService } from '../../../services/dashboard.service';
+import { DashboardComponent } from './dashboard.component'; // will go away
 
 @Component({
     selector: 'app-event-modal',
@@ -17,7 +18,8 @@ export class EventModalComponent implements OnInit {
     @Input() item: any;
 
     constructor(
-        private dashboardService: DashboardService
+        private dashboardService: DashboardService,
+        private dashCompo: DashboardComponent // will go away
     ) {
 
     }
@@ -50,6 +52,11 @@ export class EventModalComponent implements OnInit {
         this.dashboardService.addEvent((eventObject)).subscribe( data => {
             if (data.ok && data.n && data.nModified) {
                 console.log('New event created', data);
+
+                // this is just wrong, there must be a better way throug service, actions and store!!
+                this.dashCompo.getCourtsData();
+
+
             } else {
                 console.log('Failed to create event', data);
             }

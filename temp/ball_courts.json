@@ -88,3 +88,38 @@
     },
     "events": []
 }
+
+
+
+
+
+
+/////////////////////////////////////////////////////////
+
+{
+    "court_id": "000099",
+    "court_name": "TESTIS",
+    "address": {
+        "city": "Ljubjana",
+        "district": ["Vič", "Trnovo"],
+        "street": "Gerbičeva ulica 51a",
+        "note": "in vicinity of dormitory no. 2",
+        "coord": [46.038120, 14.487301]
+    },
+    "data": {
+        "description": null,
+        "photo": null,
+        "rating": null,
+        "condition": null,
+        "popularity": null,
+        "access": "free",
+        "outdoor": "yes",
+        "indoor": null,
+        "hoops_num": {
+            "total": 2,
+            "individual": 2,
+            "shared": 0
+        }
+    },
+    "events": []
+}
