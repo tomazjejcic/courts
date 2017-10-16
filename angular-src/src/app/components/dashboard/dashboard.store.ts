@@ -55,4 +55,13 @@ export class DashboardStore {
         })
     }
 
+    // when you add an event the component should call actions which would get to store, in store you should call the appi where you
+    // you would update the server, the server would return you the updateed object which you would send to the state.
+    // component should listen the state and update itself accordingly.
+
+
+    // this will be the reducer
+
+    // futher you need efects and selector
+
 }

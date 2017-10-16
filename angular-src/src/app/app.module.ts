@@ -21,6 +21,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/components/dashboard.component';
+import { NgrxComponent } from './components/ngrx/components/ngrx.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EventModalComponent } from './components/dashboard/components/event-modal.component';
 import { ItemdashboardComponent } from './components/dashboard/components/itemdashboard.component';
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
     {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+    {path: 'ngrx', component: NgrxComponent, canActivate: [AuthGuard]},
 ]
 
 @NgModule({
@@ -41,6 +43,7 @@ const appRoutes: Routes = [
         RegisterComponent,
         HomeComponent,
         DashboardComponent,
+        NgrxComponent,
         ProfileComponent,
         EventModalComponent,
         ItemdashboardComponent

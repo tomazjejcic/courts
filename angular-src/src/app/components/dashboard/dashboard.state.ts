@@ -16,3 +16,6 @@ export const DEFAULT_COURT_STATE: ICourtState = {
         courtEvents$: new BehaviorSubject<any>(undefined)
     }
 }
+
+
+// this will be the reducer
