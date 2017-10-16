@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
-import { DashboardService } from '../../../services/dashboard.service';
+import { AuthService } from '../../../auth/services/auth.service';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
     selector: 'app-dashboard',
-    templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.scss']
+    templateUrl: './dashboard-page.html',
+    styleUrls: ['./dashboard-page.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardPageComponent implements OnInit {
 
     courts: any;
 

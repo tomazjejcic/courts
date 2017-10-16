@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { EventModalComponent } from '../components/event-modal.component';
+import { EventModalComponent } from './event-modal.component';
 
-import { DashboardActions, ICourtState} from '../index';
+import { DashboardActions, ICourtState} from '../../index';
 import { Subject } from 'rxjs/Rx';
 // import { Observable } from 'rxjs/Rx';
 

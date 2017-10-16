@@ -7,32 +7,32 @@ import { RouterModule, Routes } from '@angular/router';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
 // Services
-import { ValidateService } from './services/validate.service';
-import { AuthService } from './services/auth.service';
-import { DashboardService } from './services/dashboard.service';
-import { AuthGuard } from './guards/auth.guard';
+import { ValidateService } from './auth/services/validate.service';
+import { AuthService } from './auth/services/auth.service';
+import { DashboardService } from './courts/services/dashboard.service';
+import { AuthGuard } from './auth/guards/auth.guard';
 
-import { DashboardActions, DashboardStore } from './components/dashboard/index';
+import { DashboardActions, DashboardStore } from './courts/index';
 
 // Copmonents
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { HomeComponent } from './components/home/home.component';
-import { DashboardComponent } from './components/dashboard/components/dashboard.component';
-import { NgrxComponent } from './components/ngrx/components/ngrx.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { EventModalComponent } from './components/dashboard/components/event-modal.component';
-import { ItemdashboardComponent } from './components/dashboard/components/itemdashboard.component';
+import { AppComponent } from './core/containers/app.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { HomePageComponent } from './courts/containers/home/home-page';
+import { DashboardPageComponent } from './courts/containers/dashboard/dashboard-page';
+import { NgrxPageComponent } from './courts/containers/ngrx/ngrx-page';
+import { ProfilePageComponent } from './courts/containers/profile/profile-page';
+import { EventModalComponent } from './courts/components/dashboard/event-modal.component';
+import { ItemdashboardComponent } from './courts/components/dashboard/itemdashboard.component';
 
 const appRoutes: Routes = [
-    {path: '', component: HomeComponent},
+    {path: '', component: HomePageComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
-    {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-    {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-    {path: 'ngrx', component: NgrxComponent, canActivate: [AuthGuard]},
+    {path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard]},
+    {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
+    {path: 'ngrx', component: NgrxPageComponent, canActivate: [AuthGuard]},
 ]
 
 @NgModule({
@@ -41,10 +41,10 @@ const appRoutes: Routes = [
         NavbarComponent,
         LoginComponent,
         RegisterComponent,
-        HomeComponent,
-        DashboardComponent,
-        NgrxComponent,
-        ProfileComponent,
+        HomePageComponent,
+        DashboardPageComponent,
+        NgrxPageComponent,
+        ProfilePageComponent,
         EventModalComponent,
         ItemdashboardComponent
     ],

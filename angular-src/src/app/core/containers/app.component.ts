@@ -4,7 +4,7 @@ import {
     DashboardActions,
     ICourtState,
     DEFAULT_COURT_STATE
-} from './components/dashboard/index';
+} from '../../courts/index';
 
 @Component({
     selector: 'app-root',

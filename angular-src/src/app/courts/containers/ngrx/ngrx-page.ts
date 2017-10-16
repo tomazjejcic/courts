@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-ngrx',
-    templateUrl: './ngrx.component.html',
-    styleUrls: ['./ngrx.component.scss']
+    templateUrl: './ngrx-page.html',
+    styleUrls: ['./ngrx-page.scss']
 })
-export class NgrxComponent {
+export class NgrxPageComponent {
 
     constructor(
 

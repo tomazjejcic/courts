@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from './auth.service';
+import { AuthService } from '../../auth/services/auth.service';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 

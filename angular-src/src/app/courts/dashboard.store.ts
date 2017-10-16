@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { DashboardService } from '../../services/dashboard.service';
+import { DashboardService } from './services/dashboard.service';
 
 import {
     ICourtState,
