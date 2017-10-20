@@ -1,35 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../auth/services/auth.service';
+import { Component } from '@angular/core';
 import { DashboardService } from '../../services/dashboard.service';
+
+import { Store } from '@ngrx/store';
+import { ADD_COURT_EVENT } from '../../actions/courts';
 
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard-page.html',
     styleUrls: ['./dashboard-page.scss']
 })
-export class DashboardPageComponent implements OnInit {
+export class DashboardPageComponent {
 
-    courts: any;
+    public storeData;
 
     constructor(
-        private authService: AuthService,
-        private dashboardService: DashboardService
-    ) { }
 
-    ngOnInit() {
+        private dashboardService: DashboardService,
+        private _store: Store<any>
+    ) {
 
-        this.getCourtsData();
+        this.storeData = this._store.select('courts');
     }
 
-    getCourtsData() {
+    createNewEvent(eventObject) {
 
-        this.dashboardService.getCourts().subscribe( data => {
-            console.log('THE DATA from dashboard service in dashboard component: ', data);
-            this.courts = data;
-        },
-        err => {
-            console.log(err);
-            return false;
+        this.dashboardService.addEvent((eventObject)).subscribe( data => {
+            // TODO: should refactor in a way that I receive the data I added
+            if (data.ok && data.n && data.nModified) {
+
+                this._store.dispatch({type: ADD_COURT_EVENT, payload: eventObject});
+            } else {
+
+                console.log('Failed to create event', data);
+            }
         })
     }
 }

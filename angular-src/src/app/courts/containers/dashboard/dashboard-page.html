@@ -1,7 +1,6 @@
 <h2 class="page-header">Dashboard</h2>
 
-<div *ngIf="courts">
-    <app-itemdashboard *ngFor="let court of courts"
-        [courtItem]="court">
-    </app-itemdashboard>
-</div>
+<app-courts-list
+    [listData]="(storeData | async)?.data"
+    (newEvent)="createNewEvent($event)">
+</app-courts-list>

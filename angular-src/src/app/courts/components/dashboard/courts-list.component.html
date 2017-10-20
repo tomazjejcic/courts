@@ -1,0 +1,6 @@
+<div *ngFor="let court of listData">
+    <app-itemdashboard
+        [courtItem]="court"
+        (newEvent)="eventPassed($event)">
+    </app-itemdashboard>
+</div>

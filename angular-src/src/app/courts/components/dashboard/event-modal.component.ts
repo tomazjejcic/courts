@@ -1,13 +1,11 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { DashboardService } from '../../services/dashboard.service';
-import { DashboardPageComponent } from '../../containers/dashboard/dashboard-page'; // will go away
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-event-modal',
     templateUrl: './event-modal.component.html',
     styleUrls: ['./event-modal.component.scss']
 })
-export class EventModalComponent implements OnInit {
+export class EventModalComponent {
 
     public visible = false;
     public visibleAnimate = false;
@@ -16,15 +14,9 @@ export class EventModalComponent implements OnInit {
     testform;
 
     @Input() item: any;
+    @Output() newEvent = new EventEmitter();
 
-    constructor(
-        private dashboardService: DashboardService,
-        private dashPage: DashboardPageComponent // will go away
-    ) {
-
-    }
-
-    ngOnInit() {
+    constructor() {
 
     }
 
@@ -49,18 +41,7 @@ export class EventModalComponent implements OnInit {
             hour: this.inputEmail,
         }
 
-        this.dashboardService.addEvent((eventObject)).subscribe( data => {
-            if (data.ok && data.n && data.nModified) {
-                console.log('New event created', data);
-
-                // this is just wrong, there must be a better way throug service, actions and store!!
-                this.dashPage.getCourtsData();
-
-
-            } else {
-                console.log('Failed to create event', data);
-            }
-        })
+        this.newEvent.emit(eventObject);
     }
 
     // TODO:

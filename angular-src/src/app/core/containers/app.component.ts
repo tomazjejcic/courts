@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {
-    DashboardStore,
-    DashboardActions,
-    ICourtState,
-    DEFAULT_COURT_STATE
-} from '../../courts/index';
+import { Store } from '@ngrx/store';
+
+import { DashboardService } from '../../courts/services/dashboard.service';
+import { SET_INITIAL_STATE } from '../../courts/actions/courts';
 
 @Component({
     selector: 'app-root',
@@ -13,29 +11,30 @@ import {
 })
 export class AppComponent implements OnInit {
 
-    private _courtState: ICourtState = DEFAULT_COURT_STATE;
-
     constructor(
 
-        private _dashboardStore: DashboardStore
+        private _dashboardService: DashboardService,
+        private _store: Store<any>
     ) {
 
     }
 
     ngOnInit() {
 
-        // Initialize Store
         this.initStores();
-
-        // Initialize State
-        this.initState();
     }
 
     initStores() {
-        DashboardActions.dashboardInit(this._dashboardStore);
+
+        this._dashboardService.getCourts().subscribe( data => {
+            console.log('DATABASE SUCCESS: ', data);
+            this._store.dispatch({type: SET_INITIAL_STATE, payload: data});
+        },
+        err => {
+            console.log(err);
+            return false;
+        })
+
     }
 
-    initState() {
-        this._courtState = DashboardActions.getState();
-    }
 }
