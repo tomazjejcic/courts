@@ -24,13 +24,12 @@ export class DashboardPageComponent {
 
     createNewEvent(eventObject) {
 
-        this.dashboardService.addEvent((eventObject)).subscribe( data => {
-            // TODO: should refactor in a way that I receive the data I added
-            if (data.ok && data.n && data.nModified) {
+        this.dashboardService.createNewEvent((eventObject)).subscribe( data => {
 
-                this._store.dispatch({type: ADD_COURT_EVENT, payload: eventObject});
+            // this if check should be done better
+            if (data[0].data.event_time) {
+                this._store.dispatch({type: ADD_COURT_EVENT, payload: data[0]});
             } else {
-
                 console.log('Failed to create event', data);
             }
         })

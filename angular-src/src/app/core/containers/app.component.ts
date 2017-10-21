@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
     initStores() {
 
-        this._dashboardService.getCourts().subscribe( data => {
+        this._dashboardService.getCourtsWithEvents().subscribe( data => {
             console.log('DATABASE SUCCESS: ', data);
             this._store.dispatch({type: SET_INITIAL_STATE, payload: data});
         },

@@ -22,8 +22,7 @@
             "individual": 2,
             "shared": 4
         }
-    },
-    "events": []
+    }
 },
 {
     "court_id": "000002",
@@ -49,17 +48,7 @@
             "individual": 0,
             "shared": 4
         }
-    },
-    "events": [
-        {
-            "date": "today",
-            "hour": "one"
-        },
-        {
-            "date": "tomorrow",
-            "hour": "two"
-        }
-    ]
+    }
 },
 {
     "court_id": "000003",
@@ -85,8 +74,7 @@
             "individual": 2,
             "shared": 0
         }
-    },
-    "events": []
+    }
 }
 
 
@@ -94,6 +82,67 @@
 
 
 
+/////////////////////////////////////////////////////////
+{
+	"db_court_id" : "59eae078f65ef838ac857376",
+	"court_id" : "000001",
+	"players" : [ ],
+	"data" : {
+		"time_created" : null,
+		"event_time" : {
+			"date" : "one",
+			"hour" : "two"
+		}
+	}
+}
+{
+	"db_court_id" : "59eae078f65ef838ac857376",
+	"court_id" : "000001",
+	"players" : [ ],
+	"data" : {
+		"time_created" : null,
+		"event_time" : {
+			"date" : "kh",
+			"hour" : "khm"
+		}
+	}
+}
+{
+	"db_court_id" : "59eae078f65ef838ac857376",
+	"court_id" : "000001",
+	"players" : [ ],
+	"data" : {
+		"time_created" : null,
+		"event_time" : {
+			"date" : "wret",
+			"hour" : "wret"
+		}
+	}
+}
+{
+	"db_court_id" : "59eae078f65ef838ac857377",
+	"court_id" : "000002",
+	"players" : [ ],
+	"data" : {
+		"time_created" : null,
+		"event_time" : {
+			"date" : "hhhh",
+			"hour" : "wwww"
+		}
+	}
+}
+{
+	"db_court_id" : "59eae078f65ef838ac857378",
+	"court_id" : "000003",
+	"players" : [ ],
+	"data" : {
+		"time_created" : null,
+		"event_time" : {
+			"date" : "llll",
+			"hour" : "pppp"
+		}
+	}
+}
 /////////////////////////////////////////////////////////
 
 {

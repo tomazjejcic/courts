@@ -35,13 +35,23 @@ export class EventModalComponent {
     submitEvent() {
         this.hide();
 
-        const eventObject = {
-            _id: this.item._id,
-            date: this.testform,
-            hour: this.inputEmail,
+        // construct Court Event Object
+        const courtEventObject = {
+
+            db_court_id: this.item._id,
+            court_id: this.item.court_id,
+            data: {
+                time_created: null,
+                event_time: {
+                    date: this.testform,
+                    hour: this.inputEmail
+                }
+            },
+            players: []
+
         }
 
-        this.newEvent.emit(eventObject);
+        this.newEvent.emit(courtEventObject);
     }
 
     // TODO:

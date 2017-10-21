@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
 const Courts = require('../models/courts');
+const CourtEvents = require('../models/court_events');
 
 // Register
 router.post('/register', (req, res, next) => {
@@ -67,7 +68,8 @@ router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res
 // Dashboard
 router.get('/dashboard', passport.authenticate('jwt', {session: false}), (req, res, next) => {
 
-    Courts.findCourts( (err, courts) => {
+    // Courts.findCourts( (err, courts) => {
+    Courts.getCourtsWithEvents( (err, courts) => {
 
         if (err) {
             res.json({success: false, msg: 'Failed to retrieve courts, Error: ', err});
@@ -77,14 +79,14 @@ router.get('/dashboard', passport.authenticate('jwt', {session: false}), (req, r
     });
 })
 
-// add event on court
-router.post('/addevent', (req, res, next) => {
+// Create new Court Event
+router.post('/createevent', (req, res, next) => {
 
     const eventObject = req.body;
 
-    Courts.addEvent(eventObject, (err, data) => {
+    CourtEvents.addCourtEvent(eventObject, (err, data) => {
         if (err) {
-            res.json({success: false, msg: 'Failed to ADD EVENT, Error: ', err});
+            res.json({success: false, msg: 'Failed to CREATE EVENT, Error: ', err});
         } else {
             return res.json(data);        
         }

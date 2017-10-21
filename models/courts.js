@@ -63,35 +63,28 @@ const courtsSchema = mongoose.Schema({
                 type: Number,
             }
         }
-    },
-    events: {
-        type: Array
     }
 })
 
 const Courts = module.exports = mongoose.model('Courts', courtsSchema);
 
 // Find all Courts in database
-module.exports.findCourts = function(callback) {
+// module.exports.findCourts = function(callback) {
+//     Courts.find({}, callback); // {} query selector
+// }
 
-    Courts.find({}, callback); // {} query selector
-}
+module.exports.getCourtsWithEvents = function(callback) {
 
-// Add Event on selected court
-module.exports.addEvent = function(eventObject, callback) {
-
-    Courts.update(
-
-        // {_id: "59d3473f9334cced6411040arrrrr"}, // error test
-        {_id: eventObject._id},
+    // Populate Courts with Court Events
+    Courts.aggregate([
         {
-            $push: {
-                events: {
-                    date: eventObject.date,
-                    hour: eventObject.hour,
-                }
-            }
-        },
-        callback
-    )
+            $lookup:
+              {
+                from: "courtevents",
+                localField: "court_id",
+                foreignField: "court_id",
+                as: "court_events"
+              }
+         }
+    ], callback)
 }

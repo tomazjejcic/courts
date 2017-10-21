@@ -13,8 +13,8 @@ export class DashboardService {
         private http: Http
     ) { }
 
-    // get courts in dashboard
-    getCourts() {
+    // get courts with events in dashboard
+    getCourtsWithEvents() {
         const headers = new Headers();
         this.authService.loadToken();
         this.authToken = this.authService.authToken;
@@ -26,10 +26,10 @@ export class DashboardService {
     }
 
     // add event to court
-    addEvent(eventObject) {
+    createNewEvent(eventObject) {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/users/addevent', eventObject, {headers: headers})
+        return this.http.post('http://localhost:3000/users/createevent', eventObject, {headers: headers})
             .map(res => res.json());
     }
 

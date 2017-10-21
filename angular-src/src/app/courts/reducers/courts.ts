@@ -9,9 +9,9 @@ export const courts = (state = {}, action) => {
         case ADD_COURT_EVENT:
 
             state['data'].map(court => {
-                if (court._id === action.payload._id) {
+                if (court._id === action.payload.db_court_id) {
 
-                    const updatedEvents = court.events.push({date: action.payload.date, hour: action.payload.hour});
+                    const updatedEvents = court.court_events.push(action.payload);
 
                     return Object.assign({},
                         {
@@ -19,7 +19,7 @@ export const courts = (state = {}, action) => {
                             court_id: court.court_id,
                             court_name: court.court_name,
                             data: court.data,
-                            events: updatedEvents,
+                            court_events: updatedEvents,
                             _id: court._id
                         }
                     );
