@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
 
-                <form class="form-horizontal" #myForm="ngForm">
+                <!-- <form class="form-horizontal" #myForm="ngForm">
                     <fieldset>
                         <div class="form-group">
                             <label for="inputEmail" class="col-lg-2 control-label">Test</label>
@@ -24,8 +24,14 @@
                             </div>
                         </div>
                     </fieldset>
-                </form>
+                </form> -->
 
+                <div>
+                    <button (click)="showMoment()">Momnet</button>
+                </div>
+                
+                <owl-date-time class="owd-dateTime-dialog" [(ngModel)]="moment" [inline]="true"></owl-date-time>
+                    
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" (click)="hide()">Close</button>

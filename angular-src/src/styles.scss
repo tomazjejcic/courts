@@ -23,3 +23,8 @@ body {
     height: 1px;
     background: $blue;
 }
+
+// positioning event date-time picker
+.owl-dateTime.owl-dateTime-inline .owl-dateTime-dialog {
+    position: relative;
+}

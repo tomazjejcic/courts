@@ -1,11 +1,13 @@
 // Modules
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { Store, StoreModule } from '@ngrx/store';
+import { DateTimePickerModule } from 'ng-pick-datetime';
 
 // Services
 import { ValidateService } from './auth/services/validate.service';
@@ -51,11 +53,13 @@ const appRoutes: Routes = [
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         RouterModule.forRoot(appRoutes),
         HttpModule,
         FormsModule,
         FlashMessagesModule,
-        StoreModule.forRoot({courts})
+        StoreModule.forRoot({courts}),
+        DateTimePickerModule
     ],
     providers: [
         ValidateService,

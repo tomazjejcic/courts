@@ -12,6 +12,7 @@ export class EventModalComponent {
 
     inputEmail;
     testform;
+    moment;
 
     @Input() item: any;
     @Output() newEvent = new EventEmitter();
@@ -30,6 +31,10 @@ export class EventModalComponent {
 
         this.visible = false;
         setTimeout(() => this.visible = false, 300);
+    }
+
+    showMoment() {
+        console.log('MOMENT: ', this.moment);
     }
 
     submitEvent() {
