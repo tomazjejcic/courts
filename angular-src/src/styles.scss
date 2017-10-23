@@ -6,6 +6,16 @@
 $blue:              #094662;
 $green:             #9FDA3F;
 $white:             #E7E7EF;
+$gray-bg:           #2F3438;
+
+$gray-base:              #000 !default;
+$gray-darker:            #272B30 !default; // #222
+$gray-dark:              #3A3F44 !default;   // #333
+$gray:                   #52575C !default; // #555
+$gray-light:             #7A8288 !default;   // #999
+$gray-lighter:           #999 !default; // #eee
+
+
 
 body {
     background: $blue;
@@ -24,7 +34,80 @@ body {
     background: $blue;
 }
 
-// positioning event date-time picker
+/////////////////////////////////////
+//  date-time picker custom style 
+/////////////////////////////////////
+// TODO: date-time picker mobile responsivnes
+.owl-dateTime-dialog {
+    width: 400px !important;
+}
+
+.owl-state-default {
+    color: $white !important;
+    border: none !important;
+}
+
+.owl-calendar tbody td.owl-calendar-outFocus {
+    color: $gray !important;
+}
+
 .owl-dateTime.owl-dateTime-inline .owl-dateTime-dialog {
     position: relative;
+    background-color: $gray-bg;
+    border: none;
 }
+
+// months left arrow
+.owl-calendar-control .owl-calendar-controlNav .nav-next:before {
+    border-left: .75em solid $green !important;
+}
+
+// months right arrow
+.owl-calendar-control .owl-calendar-controlNav .nav-prev:before {
+    border-right: .75em solid $green !important;
+}
+
+.owl-inputtext {
+    background-color: $gray !important;
+    text-align: center;
+}
+
+// weekdays 
+.owl-weekdays th.owl-weekday {
+    line-height: 2em !important;
+    font-size: 1em !important;
+    color: $white !important;
+}
+
+.owl-calendar-control .owl-calendar-controlContent .year-control {
+    color: $gray-light !important;
+}
+
+.owl-days td.owl-day {
+    line-height: 2em !important;
+    font-size: 1.2em !important;
+}
+
+.owl-calendar-wrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.owl-timer-wrapper {
+    height: 7em !important;
+}
+
+.owl-calendar tbody td:not(.owl-calendar-selected):not(.owl-calendar-invalid):hover {
+    background-color: $gray-lighter !important;
+}
+
+.owl-calendar tbody td.owl-calendar-selected {
+    background-color: $green !important;
+}
+
+.owl-timer-wrapper .owl-timer-control {
+    .icon {
+    color: $green !important;
+    }
+}
+/////////////////////////////////////

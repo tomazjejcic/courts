@@ -31,6 +31,7 @@ export class EventModalComponent {
 
         this.visible = false;
         setTimeout(() => this.visible = false, 300);
+        this.moment = undefined;
     }
 
     showMoment() {
