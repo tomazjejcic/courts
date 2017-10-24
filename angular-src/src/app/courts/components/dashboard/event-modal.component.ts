@@ -7,12 +7,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class EventModalComponent {
 
+    public moment;
     public visible = false;
     public visibleAnimate = false;
-
-    inputEmail;
-    testform;
-    moment;
 
     @Input() item: any;
     @Output() newEvent = new EventEmitter();
@@ -39,7 +36,6 @@ export class EventModalComponent {
     }
 
     submitEvent() {
-        this.hide();
 
         // construct Court Event Object
         const courtEventObject = {
@@ -48,14 +44,12 @@ export class EventModalComponent {
             court_id: this.item.court_id,
             data: {
                 time_created: null,
-                event_time: {
-                    date: this.testform,
-                    hour: this.inputEmail
-                }
+                event_time: this.moment
             },
             players: []
-
         }
+
+        this.hide();
 
         this.newEvent.emit(courtEventObject);
     }

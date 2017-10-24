@@ -26,16 +26,17 @@
                     </fieldset>
                 </form> -->
 
-                <!-- <div>
+                <div>
                     <button (click)="showMoment()">Momnet</button>
-                </div> -->
+                </div>
                 
-                <owl-date-time [showHeader]="true" [(ngModel)]="moment" [inline]="true"></owl-date-time>
+                <owl-date-time [showHeader]="true" [dateFormat]="'DD/MMM/YYYY HH:mm'" [placeHolder]="'dd/mm/yyyy HH:mm'" [(ngModel)]="moment" [inline]="true"></owl-date-time>
                     
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" (click)="hide()">Close</button>
-                <button type="button" class="btn btn-primary" (click)="submitEvent(); myForm.reset()">Save changes</button>
+                <!-- <button type="button" class="btn btn-primary" (click)="submitEvent(); myForm.reset()">Save changes</button> -->
+                <button type="button" class="btn btn-primary" (click)="submitEvent()">Save changes</button>
             </div>
         </div>
     </div>

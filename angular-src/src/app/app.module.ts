@@ -26,6 +26,7 @@ import { ProfilePageComponent } from './courts/containers/profile/profile-page';
 import { CourtsListComponent } from './courts/components/dashboard/courts-list.component';
 import { EventModalComponent } from './courts/components/dashboard/event-modal.component';
 import { ItemdashboardComponent } from './courts/components/dashboard/itemdashboard.component';
+import { CourtEventComponent } from './courts/components/dashboard/court-event.component';
 
 // Reducers
 import { courts } from './courts/reducers/courts';
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
         ProfilePageComponent,
         CourtsListComponent,
         EventModalComponent,
-        ItemdashboardComponent
+        ItemdashboardComponent,
+        CourtEventComponent
     ],
     imports: [
         BrowserModule,

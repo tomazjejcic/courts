@@ -21,13 +21,8 @@ const courtEventsSchema = mongoose.Schema({
             type: String
         },
         event_time: {
-            date: {
-                type: String
-            },
-            hour: {
-                type: String
-            }
-        },
+            type: Date
+        }
     },
     players: {
         type: Array
@@ -43,7 +38,7 @@ const CourtEvents = module.exports = mongoose.model('CourtEvents', courtEventsSc
 
 // Add Event
 module.exports.addCourtEvent = function(courtEventObject, callback) {
-    
+
     // for some reason just 'insert' didn't work???
     CourtEvents.insertMany(
         [courtEventObject],
