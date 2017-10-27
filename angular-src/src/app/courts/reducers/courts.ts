@@ -7,6 +7,7 @@ export const courts = (state = {}, action) => {
             return Object.assign({}, state, {data: action.payload});
 
         case ADD_COURT_EVENT:
+        // case ADD_COURT_EVENT_SUCCESS  // will refactor this way thus it doesn't interfere with effects action ADD_COURT_EVENT
 
             state['data'].map(court => {
                 if (court._id === action.payload.db_court_id) {

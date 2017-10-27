@@ -6,7 +6,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     templateUrl: './courts-list.component.html',
     styleUrls: ['./courts-list.component.scss']
 })
-export class CourtsListComponent  {
+export class CourtsListComponent {
 
     @Input() listData;
     @Output() newEvent = new EventEmitter();

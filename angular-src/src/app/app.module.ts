@@ -61,6 +61,7 @@ const appRoutes: Routes = [
         FormsModule,
         FlashMessagesModule,
         StoreModule.forRoot({courts}),
+        // EffectModule.runEffect
         DateTimePickerModule
     ],
     providers: [

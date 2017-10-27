@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const config = require('../config/database');
+// const CourtEvents = require('./court_events');
 
 // Courts Schema
 const courtsSchema = mongoose.Schema({
@@ -77,7 +78,7 @@ module.exports.getCourtsWithEvents = function(callback) {
 
     // Populate Courts with Court Events
     Courts.aggregate([
-        {
+         {
             $lookup:
               {
                 from: "courtevents",
@@ -85,6 +86,41 @@ module.exports.getCourtsWithEvents = function(callback) {
                 foreignField: "court_id",
                 as: "court_events"
               }
-         }
+         },
+         // need to unwind court_events so you can sort them
+         {
+             $unwind: {
+                 path: '$court_events',
+                 // preserve null, otherwise courts without events will be removed
+                 preserveNullAndEmptyArrays: true
+             }
+         },
+         {
+             $sort: { "court_events.data.event_time": 1 }
+         },
+         // after unwind need to group/build the document back
+         { 
+             $group: {
+                "_id": "$_id",
+                "court_id" : { "$first" : "$court_id" },
+                "court_name" : { "$first" : "$court_name" },
+                "address": { "$first": "$address" },
+                "data": { "$first": "$data" },
+                "court_events": { "$push": "$court_events" }
+            }
+         },
+         {
+             $sort: { "court_id": 1 }
+         },
+//          { 
+//             $project: {
+//                 "_id": 1
+//                 "court_id": 1,
+//                 "court_name": 1,
+//                 "data" : 1,
+//                 "address": 1,
+//                 "court_events": 1,
+//              }
+//          }
     ], callback)
 }

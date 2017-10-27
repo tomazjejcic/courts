@@ -67,8 +67,7 @@ router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res
 
 // Dashboard
 router.get('/dashboard', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-
-    // Courts.findCourts( (err, courts) => {
+        
     Courts.getCourtsWithEvents( (err, courts) => {
 
         if (err) {

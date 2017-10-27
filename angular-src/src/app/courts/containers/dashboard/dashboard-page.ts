@@ -19,10 +19,13 @@ export class DashboardPageComponent {
         private _store: Store<any>
     ) {
 
-        this.storeData = this._store.select('courts');
+        // ** map here thus you don't need ' async)?.data" ' in html
+        this.storeData = this._store.select('courts').map(co => co.data);
     }
 
     createNewEvent(eventObject) {
+        // all this goes to effects
+        // this._store.dispatch({type: ADD_COURT_EVENT, payload: eventObject}); // thomas
 
         this.dashboardService.createNewEvent((eventObject)).subscribe( data => {
 
