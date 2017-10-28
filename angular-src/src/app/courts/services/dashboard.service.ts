@@ -3,6 +3,9 @@ import { AuthService } from '../../auth/services/auth.service';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { Observable } from 'rxjs/Observable';
+import { CourtEvent } from '../models/courts';
+
 @Injectable()
 export class DashboardService {
 
@@ -25,12 +28,11 @@ export class DashboardService {
             .map(res => res.json());
     }
 
-    // add event to court
-    createNewEvent(eventObject) {
+    createNewEvent(event: string): Observable<CourtEvent[]> {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:3000/users/createevent', eventObject, {headers: headers})
-            .map(res => res.json());
+        return this.http.post('http://localhost:3000/users/createevent', event, {headers: headers})
+            .map(res => res.json() || []);
     }
 
 }

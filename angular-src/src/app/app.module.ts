@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { Store, StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { DateTimePickerModule } from 'ng-pick-datetime';
 
 // Services
@@ -14,6 +15,9 @@ import { ValidateService } from './auth/services/validate.service';
 import { AuthService } from './auth/services/auth.service';
 import { DashboardService } from './courts/services/dashboard.service';
 import { AuthGuard } from './auth/guards/auth.guard';
+
+// Effects
+import { CourtsEffects } from './courts/effects/courts';
 
 // Copmonents
 import { AppComponent } from './core/containers/app.component';
@@ -61,7 +65,7 @@ const appRoutes: Routes = [
         FormsModule,
         FlashMessagesModule,
         StoreModule.forRoot({courts}),
-        // EffectModule.runEffect
+        EffectsModule.forRoot([CourtsEffects]),
         DateTimePickerModule
     ],
     providers: [

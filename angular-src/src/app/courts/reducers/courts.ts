@@ -1,18 +1,18 @@
-import { SET_INITIAL_STATE, ADD_COURT_EVENT } from '../actions/courts';
+import * as courtsAction from '../actions/courts';
 
 export const courts = (state = {}, action) => {
 
     switch (action.type) {
-        case SET_INITIAL_STATE:
+        case courtsAction.SET_INITIAL_STATE:
             return Object.assign({}, state, {data: action.payload});
 
-        case ADD_COURT_EVENT:
-        // case ADD_COURT_EVENT_SUCCESS  // will refactor this way thus it doesn't interfere with effects action ADD_COURT_EVENT
+        case courtsAction.EVENT_COMPLETE:
+            // return console.log('event IS COMPLETE', action.payload);
 
             state['data'].map(court => {
-                if (court._id === action.payload.db_court_id) {
+                if (court._id === action.payload[0].db_court_id) {
 
-                    const updatedEvents = court.court_events.push(action.payload);
+                    const updatedEvents = court.court_events.push(action.payload[0]);
 
                     return Object.assign({},
                         {
@@ -24,11 +24,10 @@ export const courts = (state = {}, action) => {
                             _id: court._id
                         }
                     );
-
                 } else {
                     return state;
                 }
-            })
+            });
 
             return state;
 

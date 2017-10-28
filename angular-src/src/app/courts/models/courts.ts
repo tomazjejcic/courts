@@ -25,3 +25,10 @@
 //     };
 //     events: Array<Object>;
 // }
+
+export interface CourtEvent {
+    db_court_id: string,
+    court_id: string,
+    players: Array<string>,
+    data: Object
+}

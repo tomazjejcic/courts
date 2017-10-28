@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { DashboardService } from '../../services/dashboard.service';
 
 import { Store } from '@ngrx/store';
-import { ADD_COURT_EVENT } from '../../actions/courts';
+import * as courts from '../../actions/courts';
 
 @Component({
     selector: 'app-dashboard',
@@ -24,17 +24,7 @@ export class DashboardPageComponent {
     }
 
     createNewEvent(eventObject) {
-        // all this goes to effects
-        // this._store.dispatch({type: ADD_COURT_EVENT, payload: eventObject}); // thomas
 
-        this.dashboardService.createNewEvent((eventObject)).subscribe( data => {
-
-            // this if check should be done better
-            if (data[0].data.event_time) {
-                this._store.dispatch({type: ADD_COURT_EVENT, payload: data[0]});
-            } else {
-                console.log('Failed to create event', data);
-            }
-        })
+        this._store.dispatch(new courts.AddEvent(eventObject));
     }
 }

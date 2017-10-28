@@ -1,21 +1,31 @@
+import 'rxjs/add/operator/switchMap';
+import { Injectable } from '@angular/core';
+import { Action } from '@ngrx/store';
+import { Effect, Actions } from '@ngrx/effects';
+import {Observable} from 'rxjs/Observable';
+import * as courts from '../actions/courts';
+import { CourtEvent } from '../models/courts';
+import { empty } from 'rxjs/observable/empty';
+import { DashboardService } from '../services/dashboard.service';
 
+@Injectable()
+export class CourtsEffects {
+    @Effect()
+    addEvent$: Observable<Action> = this.actions$
+        .ofType<courts.AddEvent>(courts.ADD_EVENT)
+        .map(action => action.payload)
+        .switchMap(query => {
+            if (query === '') {
+                return empty();
+            } else {
+                return this.dashboardService
+                    .createNewEvent(query)
+                    .map((courtEvent: CourtEvent[]) => new courts.EventComplete(courtEvent));
+            }
+        });
 
-// @Effects() addEvent = this.effects
-// .ofType('ADD_COURT_EVENT')
-// .map(action => action.payload)
-// .switchMap(payload => this.dashboardService.createNewEvent(payload))
-// .map(data => data[0])
-// .map(newEvent => this._store.dispatch({type: ADD_COURT_EVENT_SUCCESS, payload: newEvent));
-
-// .subscribe( data => {
-
-//     // here effects dispacth command accortding if returnde data
-//     // success or faile
-
-//     // this if check should be done better
-//     if (data[0].data.event_time) {
-//         this._store.dispatch({type: ADD_COURT_EVENT, payload: data[0]});
-//     } else {
-//         console.log('Failed to create event', data);
-//     }
-// })
+    constructor(
+        private actions$: Actions,
+        private dashboardService: DashboardService
+    ) {}
+}
