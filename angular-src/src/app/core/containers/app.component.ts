@@ -4,6 +4,8 @@ import { Store } from '@ngrx/store';
 import { DashboardService } from '../../courts/services/dashboard.service';
 import { SET_INITIAL_STATE } from '../../courts/actions/courts';
 
+import * as courts from '../../courts/actions/courts';
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -28,7 +30,8 @@ export class AppComponent implements OnInit {
 
         this._dashboardService.getCourtsWithEvents().subscribe( data => {
             console.log('DATABASE SUCCESS: ', data);
-            this._store.dispatch({type: SET_INITIAL_STATE, payload: data});
+            // this._store.dispatch({type: SET_INITIAL_STATE, payload: data});
+            this._store.dispatch(new courts.SetInitialState(data));
         },
         err => {
             console.log(err);

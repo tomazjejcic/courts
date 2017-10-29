@@ -33,7 +33,7 @@ import { ItemdashboardComponent } from './courts/components/dashboard/itemdashbo
 import { CourtEventComponent } from './courts/components/dashboard/court-event.component';
 
 // Reducers
-import { courts } from './courts/reducers/courts';
+import { reducers } from './reducers';
 
 const appRoutes: Routes = [
     {path: '', component: HomePageComponent},
@@ -64,7 +64,7 @@ const appRoutes: Routes = [
         HttpModule,
         FormsModule,
         FlashMessagesModule,
-        StoreModule.forRoot({courts}),
+        StoreModule.forRoot(reducers),
         EffectsModule.forRoot([CourtsEffects]),
         DateTimePickerModule
     ],
