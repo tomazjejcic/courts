@@ -9,6 +9,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { DateTimePickerModule } from 'ng-pick-datetime';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 // Services
 import { ValidateService } from './auth/services/validate.service';
@@ -66,6 +67,9 @@ const appRoutes: Routes = [
         FlashMessagesModule,
         StoreModule.forRoot(reducers),
         EffectsModule.forRoot([CourtsEffects]),
+        StoreDevtoolsModule.instrument({
+            maxAge: 25
+        }),
         DateTimePickerModule
     ],
     providers: [

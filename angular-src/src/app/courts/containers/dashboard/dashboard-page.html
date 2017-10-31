@@ -1,8 +1,6 @@
 <h2 class="page-header">Dashboard</h2>
 
-<button (click)="giveMeState()">GIVE ME STATE</button>
-
 <app-courts-list
-    [listData]="courts$ | async"
+    [listData]="(storeData | async)"
     (newEvent)="createNewEvent($event)">
 </app-courts-list>

@@ -13,25 +13,32 @@ export interface State extends fromCourts.State {
 
 export const getCourtsState = createFeatureSelector<CourtsState>('courts');
 
-
-export const getCor = createSelector(
+export const getCortsEntitiesState = createSelector(
     getCourtsState,
-    () => console.log('lllll'),
     state => state.courts,
-);
-
-export const getSelectedCourtsId = createSelector(
-    getCor,
-    fromCourts.getSelectedCourtsId
   );
+
 
 export const {
     selectEntities: getCourtEntities,
     selectAll: getCourts
-} = fromCourts.adapter.getSelectors(getCor);
+} = fromCourts.adapter.getSelectors(getCortsEntitiesState);
 
 
-export const getCourtsUp = createSelector(
-    getCourts,
-    (courts) =>  courts
+export const getCourtCollectionState = createSelector(
+    getCourtsState,
+    (state: CourtsState) => state.courts
+  );
+
+export const getCollectionCourtIds = createSelector(
+    getCourtCollectionState,
+    fromCourts.getIds
 );
+
+export const getCourtsCollection = createSelector(
+    getCourtEntities,
+    getCollectionCourtIds,
+    (entities, ids) => {
+        return ids.map(id => entities[id]);
+      }
+)
