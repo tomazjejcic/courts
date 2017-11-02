@@ -6,6 +6,10 @@ export interface CourtsState {
     courts: fromCourts.State;
 }
 
+export const reducers = {
+    courts: fromCourts.reducer
+}
+
 export interface State extends fromCourts.State {
     // export interface State extends fromRr.State {
     'courts': CourtsState

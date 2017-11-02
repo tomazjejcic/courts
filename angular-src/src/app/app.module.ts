@@ -1,5 +1,6 @@
 // Modules
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -7,8 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { Store, StoreModule } from '@ngrx/store';
+import {
+    StoreRouterConnectingModule,
+    RouterStateSerializer
+  } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
-import { DateTimePickerModule } from 'ng-pick-datetime';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 // Services
@@ -17,8 +21,7 @@ import { AuthService } from './auth/services/auth.service';
 import { DashboardService } from './courts/services/dashboard.service';
 import { AuthGuard } from './auth/guards/auth.guard';
 
-// Effects
-import { CourtsEffects } from './courts/effects/courts';
+import { CourtsModule } from './courts/courts.module'
 
 // Copmonents
 import { AppComponent } from './core/containers/app.component';
@@ -26,23 +29,16 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomePageComponent } from './courts/containers/home/home-page';
-import { DashboardPageComponent } from './courts/containers/dashboard/dashboard-page';
 import { ProfilePageComponent } from './courts/containers/profile/profile-page';
-import { CourtsListComponent } from './courts/components/dashboard/courts-list.component';
-import { EventModalComponent } from './courts/components/dashboard/event-modal.component';
-import { ItemdashboardComponent } from './courts/components/dashboard/itemdashboard.component';
-import { CourtEventComponent } from './courts/components/dashboard/court-event.component';
 
 // Reducers
 import { reducers } from './reducers';
 
-const appRoutes: Routes = [
-    {path: '', component: HomePageComponent},
-    {path: 'register', component: RegisterComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard]},
-    {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]}
-]
+// Routes
+import { routes } from './routes';
+
+// Utils
+import { CustomRouterStateSerializer } from './shared/utils';
 
 @NgModule({
     declarations: [
@@ -51,32 +47,30 @@ const appRoutes: Routes = [
         LoginComponent,
         RegisterComponent,
         HomePageComponent,
-        DashboardPageComponent,
         ProfilePageComponent,
-        CourtsListComponent,
-        EventModalComponent,
-        ItemdashboardComponent,
-        CourtEventComponent
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        RouterModule.forRoot(appRoutes),
+        CommonModule,
+        RouterModule.forRoot(routes, { useHash: true }),
         HttpModule,
         FormsModule,
         FlashMessagesModule,
+        CourtsModule,
         StoreModule.forRoot(reducers),
-        EffectsModule.forRoot([CourtsEffects]),
+        EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument({
             maxAge: 25
         }),
-        DateTimePickerModule
+        StoreRouterConnectingModule,
     ],
     providers: [
         ValidateService,
         AuthService,
         DashboardService,
-        AuthGuard
+        AuthGuard,
+        {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer}
     ],
     bootstrap: [AppComponent]
 })

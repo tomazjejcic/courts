@@ -23,7 +23,7 @@ export class DashboardPageComponent implements OnInit {
         private store: Store<any>,
     ) {
 
-        this.storeData = this.store.select('courtsReducer').map(data => data.entities);
+        this.storeData = this.store.select('courts').map(data => data.courts.entities);
     }
 
     createNewEvent(eventObject) {
