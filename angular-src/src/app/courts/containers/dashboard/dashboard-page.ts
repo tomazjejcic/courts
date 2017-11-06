@@ -12,7 +12,7 @@ import { Court } from '../../models/courts';
     selector: 'app-dashboard',
     templateUrl: './dashboard-page.html',
     styleUrls: ['./dashboard-page.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.Default,
 })
 export class DashboardPageComponent implements OnInit {
 

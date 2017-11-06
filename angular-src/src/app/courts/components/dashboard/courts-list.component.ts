@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
     selector: 'app-courts-list',
     templateUrl: './courts-list.component.html',
     styleUrls: ['./courts-list.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.Default,
 })
 export class CourtsListComponent {
 

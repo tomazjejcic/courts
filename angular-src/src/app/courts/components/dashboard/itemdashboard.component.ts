@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { EventModalComponent } from './event-modal.component';
 
 @Component({
     selector: 'app-itemdashboard',
     templateUrl: './itemdashboard.component.html',
-    styleUrls: ['./itemdashboard.component.scss']
+    styleUrls: ['./itemdashboard.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Default,
 })
 export class ItemdashboardComponent {
 

@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import format from 'date-fns/format/index.js'
 
 @Component({
     selector: 'app-court-event',
     templateUrl: './court-event.component.html',
-    styleUrls: ['./court-event.component.scss']
+    styleUrls: ['./court-event.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Default,
 })
 export class CourtEventComponent implements OnInit {
 
