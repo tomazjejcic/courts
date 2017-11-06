@@ -23,12 +23,15 @@ export interface Court {
             shared: number;
         }
     };
-    events: Array<Object>;
+    court_events: Array<Object>;
 }
 
 export interface CourtEvent {
     db_court_id: string,
     court_id: string,
     players: Array<string>,
-    data: Object
+    data: {
+        event_time: Date,
+        time_created: Date
+    }
 }

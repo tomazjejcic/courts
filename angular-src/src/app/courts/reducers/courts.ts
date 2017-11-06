@@ -2,6 +2,7 @@ import { createSelector } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import * as court from '../actions/court';
 import * as collection from '../actions/court-collection';
+import { CourtEvent } from '../models/courts'
 
 import { Court } from '../models/courts';
 
@@ -29,11 +30,35 @@ export function reducer(
         case collection.LOAD_COLLECTION_SUCCESS: {
             console.log('Court Reducer Success: ', action);
 
-            // return Object.assign({}, state, {entities: action.payload});
             return {
                 ...adapter.addMany(action.payload, state),
                 selectedCourtId: state.selectedCourtId,
             }
+        }
+
+        case court.ADD_EVENT_COMPLETE: {
+
+            const payloadIndex = action.payload[0].db_court_id;
+
+            if (state.ids.indexOf(payloadIndex) > -1) {
+
+                // add new event to court
+                state.entities[payloadIndex].court_events.push(action.payload[0]);
+
+                // sort events
+                state.entities[payloadIndex].court_events.sort((a: CourtEvent, b: CourtEvent) => {
+
+                    const c = +new Date(b.data.event_time);
+                    const d = +new Date(a.data.event_time);
+
+                    return d - c
+                });
+
+            } else {
+                return state
+            }
+
+            return state
         }
 
         case court.SHOW_STATE:

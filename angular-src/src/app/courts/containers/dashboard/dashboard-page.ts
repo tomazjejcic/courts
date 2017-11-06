@@ -3,7 +3,6 @@ import { DashboardService } from '../../services/dashboard.service';
 import { Store } from '@ngrx/store';
 
 import * as courts from '../../actions/court';
-import * as courtevents from '../../actions/courtevents';
 import * as fromCourts from '../../reducers';
 import { Observable } from 'rxjs/Observable';
 import { Court } from '../../models/courts';
@@ -28,7 +27,7 @@ export class DashboardPageComponent implements OnInit {
 
     createNewEvent(eventObject) {
 
-        this.store.dispatch(new courtevents.AddEvent(eventObject));
+        this.store.dispatch(new courts.AddEvent(eventObject));
     }
 
     ngOnInit() {

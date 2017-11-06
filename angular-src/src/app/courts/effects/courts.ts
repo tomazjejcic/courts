@@ -13,19 +13,6 @@ import { DashboardService } from '../services/dashboard.service';
 
 @Injectable()
 export class CourtsEffects {
-    // @Effect()
-    // addEvent$: Observable<Action> = this.actions$
-    //     .ofType<courts.AddEvent>(courts.ADD_EVENT)
-    //     .map(action => action.payload)
-    //     .switchMap(query => {
-    //         if (query === '') {
-    //             return empty();
-    //         } else {
-    //             return this.dashboardService
-    //                 .createNewEvent(query)
-    //                 .map((courtEvent: CourtEvent[]) => new courts.EventComplete(courtEvent));
-    //         }
-    //     });
 
     @Effect()
     loadCourts$: Observable<Actions> = this.actions$
@@ -42,6 +29,20 @@ export class CourtsEffects {
                     .map((courts: Court[]) => new courtcollections.LoadCollectionSuccess(courts));
             }
         })
+
+    @Effect()
+    addEvent$: Observable<Action> = this.actions$
+        .ofType<courtactions.AddEvent>(courtactions.ADD_EVENT)
+        .map(action => action.payload)
+        .switchMap(query => {
+            if (query === '') {
+                return empty();
+            } else {
+                return this.dashboardService
+                    .createNewEvent(query)
+                    .map((courtEvent: CourtEvent[]) => new courtactions.AddEventComplete(courtEvent));
+            }
+        });
 
     constructor(
         private actions$: Actions,
