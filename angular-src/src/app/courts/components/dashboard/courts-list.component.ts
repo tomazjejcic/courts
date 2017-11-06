@@ -15,4 +15,8 @@ export class CourtsListComponent {
     eventPassed(event) {
         this.newEvent.emit(event);
     }
+
+    get data(){
+        return this.listData
+    }
 }

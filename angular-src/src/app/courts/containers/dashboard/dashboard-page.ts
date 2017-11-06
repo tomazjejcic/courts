@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnInit} from '@angular/core';
 import { DashboardService } from '../../services/dashboard.service';
-
 import { Store } from '@ngrx/store';
+
 import * as courts from '../../actions/court';
 import * as courtevents from '../../actions/courtevents';
 import * as fromCourts from '../../reducers';
@@ -16,14 +16,14 @@ import { Court } from '../../models/courts';
 })
 export class DashboardPageComponent implements OnInit {
 
-    public storeData;
+    courts$: Observable<Court[]>
 
     constructor(
 
-        private store: Store<any>,
+        private store: Store<fromCourts.State>,
     ) {
 
-        this.storeData = this.store.select('courts').map(data => data.courts.entities);
+        this.courts$ = store.select(fromCourts.getCourtsCollection)
     }
 
     createNewEvent(eventObject) {
@@ -32,7 +32,7 @@ export class DashboardPageComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        // this.courts$.subscribe(d => console.log('Dash Page Collection: ', d));
     }
 
 }

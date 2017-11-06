@@ -1,5 +1,5 @@
 export interface Court {
-    id: string;
+    _id: string;
     court_name: string;
     address: {
         city: string;

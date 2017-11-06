@@ -1,6 +1,6 @@
 <h2 class="page-header">Dashboard</h2>
 
 <app-courts-list
-    [listData]="(storeData | async)"
+    [listData]="(courts$ | async)"
     (newEvent)="createNewEvent($event)">
 </app-courts-list>

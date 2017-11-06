@@ -5,6 +5,7 @@ import { Effect, Actions } from '@ngrx/effects';
 import {Observable} from 'rxjs/Observable';
 import * as courts from '../actions/courtevents';
 import * as courtactions from '../actions/court';
+import * as courtcollections from '../actions/court-collection';
 import { Court } from '../models/courts';
 import { CourtEvent } from '../models/courts';
 import { empty } from 'rxjs/observable/empty';
@@ -31,13 +32,14 @@ export class CourtsEffects {
         .ofType<courtactions.LoadCourts>(courtactions.LOAD_COURTS)
         .switchMap(query => {
             if (!query) {
-                console.log('not a QUERRY PIZDARIJA')
+                console.log('ERR: no querry present')
                 return empty()
             } else {
-                console.log('DDDDd', query)
+                // console.log('loadCourts QUERY', query)
                 return this.dashboardService
                     .getCourtsWithEvents()
-                    .map((court: Court[]) => new courtactions.LoadSuccess(court));
+                    // .map((courts: Court[]) => new courtactions.LoadSuccess(courts));
+                    .map((courts: Court[]) => new courtcollections.LoadCollectionSuccess(courts));
             }
         })
 

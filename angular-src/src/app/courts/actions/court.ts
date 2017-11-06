@@ -13,9 +13,9 @@ export class LoadCourts implements Action {
 }
 
 export class LoadSuccess implements Action {
-    readonly type = LOAD_SUCCESS
+    readonly type = LOAD_SUCCESS;
 
-    constructor(public payload: any) {}
+    constructor(public payload: Court[]) {}
 }
 
 export class Load implements Action {
