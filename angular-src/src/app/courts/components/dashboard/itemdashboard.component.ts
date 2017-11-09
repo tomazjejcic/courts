@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, ChangeDetectionStrategy } from '@angular/core';
 import { EventModalComponent } from './event-modal.component';
 
 @Component({
@@ -12,7 +12,6 @@ export class ItemdashboardComponent {
     @ViewChild('eventModal') eventModal: EventModalComponent;
 
     @Input() courtItem: any;
-    @Output() newEvent = new EventEmitter();
 
     constructor() {
 
@@ -21,10 +20,6 @@ export class ItemdashboardComponent {
     showModal() {
 
         this.eventModal.show()
-    }
-
-    eventCreated(event) {
-        this.newEvent.emit(event);
     }
 
 }

@@ -27,7 +27,7 @@ export class Load implements Action {
 export class AddEvent implements Action {
     readonly type = ADD_EVENT
 
-    constructor(public payload: string) {}
+    constructor(public payload: CourtEvent) {}
 }
 
 export class AddEventComplete implements Action {

@@ -35,7 +35,7 @@ export class CourtsEffects {
         .ofType<courtactions.AddEvent>(courtactions.ADD_EVENT)
         .map(action => action.payload)
         .switchMap(query => {
-            if (query === '') {
+            if (!query.court_id) {
                 return empty();
             } else {
                 return this.dashboardService

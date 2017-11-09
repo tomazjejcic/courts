@@ -25,11 +25,6 @@ export class DashboardPageComponent implements OnInit {
         this.courts$ = store.select(fromCourts.getCourtsCollection)
     }
 
-    createNewEvent(eventObject) {
-
-        this.store.dispatch(new courts.AddEvent(eventObject));
-    }
-
     ngOnInit() {
         // this.courts$.subscribe(d => console.log('Dash Page Collection: ', d));
     }

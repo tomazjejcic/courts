@@ -1,5 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'app-courts-list',
@@ -10,11 +9,6 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 export class CourtsListComponent {
 
     @Input() listData;
-    @Output() newEvent = new EventEmitter();
-
-    eventPassed(event) {
-        this.newEvent.emit(event);
-    }
 
     get data(){
         return this.listData

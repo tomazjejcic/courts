@@ -28,7 +28,7 @@ export class DashboardService {
             .map(res => res.json());
     }
 
-    createNewEvent(event: string): Observable<CourtEvent[]> {
+    createNewEvent(event: CourtEvent): Observable<CourtEvent[]> {
         const headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post('http://localhost:3000/users/createevent', event, {headers: headers})

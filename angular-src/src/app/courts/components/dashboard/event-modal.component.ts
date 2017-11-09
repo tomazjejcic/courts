@@ -1,4 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as fromCourts from '../../reducers';
+import * as courts from '../../actions/court';
 
 @Component({
     selector: 'app-event-modal',
@@ -13,9 +16,10 @@ export class EventModalComponent {
     public visibleAnimate = false;
 
     @Input() item: any;
-    @Output() newEvent = new EventEmitter();
 
-    constructor() {
+    constructor(
+        private store: Store<fromCourts.State>,
+    ) {
 
     }
 
@@ -52,7 +56,7 @@ export class EventModalComponent {
 
         this.hide();
 
-        this.newEvent.emit(courtEventObject);
+        this.store.dispatch(new courts.AddEvent(courtEventObject));
     }
 
     // TODO:
