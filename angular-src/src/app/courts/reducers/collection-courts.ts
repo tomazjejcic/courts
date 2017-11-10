@@ -1,4 +1,4 @@
-import * as collection from '../actions/court-collection';
+import * as collection from '../actions/collection-courts';
 
 export interface State {
     loaded: boolean;
@@ -17,7 +17,8 @@ export function reducer (
     action: collection.Actions
 ): State {
     switch (action.type) {
-        case collection.LOAD_COLLECTION_SUCCESS: {
+
+        case collection.LOAD_SUCCESS: {
             return {
                 loaded: true,
                 loading: false,

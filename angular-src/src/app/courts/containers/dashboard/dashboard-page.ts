@@ -1,8 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnInit} from '@angular/core';
-import { DashboardService } from '../../services/dashboard.service';
 import { Store } from '@ngrx/store';
 
-import * as courts from '../../actions/court';
 import * as fromCourts from '../../reducers';
 import { Observable } from 'rxjs/Observable';
 import { Court } from '../../models/courts';
@@ -27,6 +25,8 @@ export class DashboardPageComponent implements OnInit {
 
     ngOnInit() {
         // this.courts$.subscribe(d => console.log('Dash Page Collection: ', d));
+
+        // TODO: probably need to implement 'Load_Collection' since courts not displayed on first run
     }
 
 }

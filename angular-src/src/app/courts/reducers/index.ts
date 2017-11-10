@@ -1,7 +1,7 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import * as fromCourts from './courts';
-import * as fromCollection from './courts-collection';
-import * as fromRr from '../../reducers'; // not sure if needed
+import * as fromCollection from './collection-courts';
+// import * as fromRr from '../../reducers'; // not sure if needed
 
 export interface CourtsState {
     courts: fromCourts.State;

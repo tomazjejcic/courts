@@ -1,10 +1,8 @@
-import { createSelector } from '@ngrx/store';
+// import { createSelector } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+import { Court, CourtEvent } from '../models/courts'
 import * as court from '../actions/court';
-import * as collection from '../actions/court-collection';
-import { CourtEvent } from '../models/courts'
-
-import { Court } from '../models/courts';
+import * as collection from '../actions/collection-courts';
 
 export interface State extends EntityState<Court> {
     selectedCourtId: string | null;
@@ -26,9 +24,8 @@ export function reducer(
 
     switch (action.type) {
 
-        case court.LOAD_SUCCESS:
-        case collection.LOAD_COLLECTION_SUCCESS: {
-            console.log('Court Reducer Success: ', action);
+        case collection.LOAD_SUCCESS: {
+            console.log('Court Reducer Collection Success: ', action);
 
             return {
                 ...adapter.addMany(action.payload, state),
@@ -36,7 +33,7 @@ export function reducer(
             }
         }
 
-        case court.ADD_EVENT_COMPLETE: {
+        case court.ADD_EVENT_SUCCESS: {
 
             const payloadIndex = action.payload[0].db_court_id;
 
@@ -60,15 +57,6 @@ export function reducer(
 
             return state
         }
-
-        case court.SHOW_STATE:
-             console.log('STATE in SHOW STATE REDUCER: ', state);
-             return state;
-
-        case court.LOAD:
-            return {
-                ...state
-            }
 
         default:
             return state;

@@ -1,38 +1,19 @@
-import 'rxjs/add/operator/switchMap';
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 import { Effect, Actions } from '@ngrx/effects';
-import {Observable} from 'rxjs/Observable';
-import * as courts from '../actions/courtevents';
-import * as courtactions from '../actions/court';
-import * as courtcollections from '../actions/court-collection';
-import { Court } from '../models/courts';
+import { DashboardService } from '../services/dashboard.service';
+import { Observable } from 'rxjs/Observable';
 import { CourtEvent } from '../models/courts';
 import { empty } from 'rxjs/observable/empty';
-import { DashboardService } from '../services/dashboard.service';
+import 'rxjs/add/operator/switchMap';
+import * as courts from '../actions/court';
 
 @Injectable()
 export class CourtsEffects {
 
     @Effect()
-    loadCourts$: Observable<Actions> = this.actions$
-        .ofType<courtactions.LoadCourts>(courtactions.LOAD_COURTS)
-        .switchMap(query => {
-            if (!query) {
-                console.log('ERR: no querry present')
-                return empty()
-            } else {
-                // console.log('loadCourts QUERY', query)
-                return this.dashboardService
-                    .getCourtsWithEvents()
-                    // .map((courts: Court[]) => new courtactions.LoadSuccess(courts));
-                    .map((courts: Court[]) => new courtcollections.LoadCollectionSuccess(courts));
-            }
-        })
-
-    @Effect()
     addEvent$: Observable<Action> = this.actions$
-        .ofType<courtactions.AddEvent>(courtactions.ADD_EVENT)
+        .ofType<courts.AddEvent>(courts.ADD_EVENT)
         .map(action => action.payload)
         .switchMap(query => {
             if (!query.court_id) {
@@ -40,7 +21,7 @@ export class CourtsEffects {
             } else {
                 return this.dashboardService
                     .createNewEvent(query)
-                    .map((courtEvent: CourtEvent[]) => new courtactions.AddEventComplete(courtEvent));
+                    .map((courtEvent: CourtEvent[]) => new courts.AddEventSuccess(courtEvent));
             }
         });
 

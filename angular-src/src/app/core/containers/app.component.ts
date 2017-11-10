@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-
-import { DashboardService } from '../../courts/services/dashboard.service';
-// import { SET_INITIAL_STATE } from '../../courts/actions/courts';
-
-import * as courts from '../../courts/actions/court';
+import * as collection from '../../courts/actions/collection-courts';
 
 @Component({
     selector: 'app-root',
@@ -15,7 +11,6 @@ export class AppComponent implements OnInit {
 
     constructor(
 
-        private _dashboardService: DashboardService,
         private _store: Store<any>
     ) {
 
@@ -28,18 +23,7 @@ export class AppComponent implements OnInit {
 
     initStores() {
 
-        // this._dashboardService.getCourtsWithEvents().subscribe( data => {
-        //     console.log('DATABASE SUCCESS: ', data);
-            // this._store.dispatch({type: SET_INITIAL_STATE, payload: data});
-            // this._store.dispatch(new courts.SetInitialState(data));
-        this._store.dispatch(new courts.LoadCourts())
-
+        this._store.dispatch(new collection.LoadCourts())
     }
-        // err => {
-        //     console.log(err);
-        //     return false;
-        // })
-
-    // }
 
 }
