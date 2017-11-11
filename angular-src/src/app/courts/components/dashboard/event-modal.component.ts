@@ -45,6 +45,7 @@ export class EventModalComponent {
         // construct Court Event Object
         const courtEventObject = {
 
+            _id: undefined,
             db_court_id: this.item._id,
             court_id: this.item.court_id,
             data: {

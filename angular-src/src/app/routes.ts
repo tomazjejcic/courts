@@ -29,6 +29,11 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
     },
     {
+        path: 'game',
+        loadChildren: './courts/courts.module#CourtsModule',
+        canActivate: [AuthGuard],
+    },
+    {
         path: '**', component: HomePageComponent
     }
     //   { path: '**', component: NotFoundPageComponent }, TODO: implement!

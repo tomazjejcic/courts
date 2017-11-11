@@ -27,6 +27,7 @@ export interface Court {
 }
 
 export interface CourtEvent {
+    _id: string,
     db_court_id: string,
     court_id: string,
     players: Array<string>,

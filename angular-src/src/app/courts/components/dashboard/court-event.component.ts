@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import format from 'date-fns/format/index.js'
+import { CourtEvent } from '../../models/courts';
+import format from 'date-fns/format/index.js';
 
 @Component({
     selector: 'app-court-event',
@@ -9,8 +10,7 @@ import format from 'date-fns/format/index.js'
 })
 export class CourtEventComponent implements OnInit {
 
-
-    @Input() courtEvent: any;
+    @Input() courtEvent: CourtEvent;
 
     private _date;
     private _time;
@@ -24,4 +24,8 @@ export class CourtEventComponent implements OnInit {
         this._date = format(ts, 'DD/MMM/YYYY');
         this._time = format(ts, 'HH:mm');
     }
+
+    get id() {
+        return this.courtEvent._id;
+      }
 }

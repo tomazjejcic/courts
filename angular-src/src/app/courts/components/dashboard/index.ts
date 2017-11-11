@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { DateTimePickerModule } from 'ng-pick-datetime';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +19,7 @@ export const COMPONENTS = [
 @NgModule({
     imports: [
         CommonModule,
+        RouterModule,
         FormsModule,
         DateTimePickerModule
     ],
