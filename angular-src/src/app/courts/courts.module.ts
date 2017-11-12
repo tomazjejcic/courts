@@ -23,7 +23,7 @@ import { AuthConfig } from 'angular2-jwt';
         CommonModule,
         ComponentsModule,
         RouterModule.forChild([
-            { path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard]},
+            { path: '', component: DashboardPageComponent, canActivate: [AuthGuard]},
             {
                 path: ':id',
                 component: GamePageComponent,
@@ -36,7 +36,6 @@ import { AuthConfig } from 'angular2-jwt';
     declarations: [
         DashboardPageComponent,
         GamePageComponent
-
     ],
     exports: [],
     // providers: [

@@ -21,8 +21,6 @@ import { AuthService } from './auth/services/auth.service';
 import { DashboardService } from './courts/services/dashboard.service';
 import { AuthGuard } from './auth/guards/auth.guard';
 
-import { CourtsModule } from './courts/courts.module'
-
 // Copmonents
 import { AppComponent } from './core/containers/app.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
@@ -57,7 +55,6 @@ import { CustomRouterStateSerializer } from './shared/utils';
         HttpModule,
         FormsModule,
         FlashMessagesModule,
-        CourtsModule,
         StoreModule.forRoot(reducers),
         EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument({
