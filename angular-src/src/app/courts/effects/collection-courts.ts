@@ -17,7 +17,6 @@ export class CollectionCourtsEffects {
                 console.log('ERR: no querry present')
                 return empty()
             } else {
-                console.log('loadCourts QUERY', query)
                 return this.dashboardService
                     .getCourtsWithEvents()
                     .map((courts: Court[]) => new collection.LoadSuccess(courts));

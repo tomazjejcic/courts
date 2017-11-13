@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable';
 import { CourtEvent } from '../models/courts';
 import { empty } from 'rxjs/observable/empty';
 import 'rxjs/add/operator/switchMap';
+// import 'rxjs/add/operator/catch';
+// import { of } from 'rxjs/observable/of';
 import * as courts from '../actions/court';
 
 @Injectable()
@@ -17,13 +19,15 @@ export class CourtsEffects {
         .map(action => action.payload)
         .switchMap(query => {
             if (!query.court_id) {
-                return empty();
+                // return empty();
+                throw new Error('empty id')
             } else {
                 return this.dashboardService
                     .createNewEvent(query)
-                    .map((courtEvent: CourtEvent[]) => new courts.AddEventSuccess(courtEvent));
             }
-        });
+        })
+        .map((courtEvent: CourtEvent[]) => new courts.AddEventSuccess(courtEvent));
+        // .catch((e) => of(new courts.AddEventFail(e)));
 
     constructor(
         private actions$: Actions,

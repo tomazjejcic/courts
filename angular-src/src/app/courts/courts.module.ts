@@ -25,7 +25,7 @@ import { AuthConfig } from 'angular2-jwt';
         RouterModule.forChild([
             { path: '', component: DashboardPageComponent, canActivate: [AuthGuard]},
             {
-                path: ':id',
+                path: 'game/:id',
                 component: GamePageComponent,
                 canActivate: [AuthGuard], // TODO: implement something like [GameExistsGuard]
             },

@@ -36,14 +36,15 @@ export function reducer(
         case court.ADD_EVENT_SUCCESS: {
 
             const payloadIndex = action.payload[0].db_court_id;
+            const newState = Object.assign({}, state);
 
-            if (state.ids.indexOf(payloadIndex) > -1) {
+            if (newState.ids.indexOf(payloadIndex) > -1) {
 
                 // add new event to court
-                state.entities[payloadIndex].court_events.push(action.payload[0]);
+                newState.entities[payloadIndex].court_events.push(action.payload[0]);
 
                 // sort events
-                state.entities[payloadIndex].court_events.sort((a: CourtEvent, b: CourtEvent) => {
+                newState.entities[payloadIndex].court_events.sort((a: CourtEvent, b: CourtEvent) => {
 
                     const c = +new Date(b.data.event_time);
                     const d = +new Date(a.data.event_time);
@@ -51,11 +52,12 @@ export function reducer(
                     return d - c
                 });
 
+                return newState
+
             } else {
-                return state
+                return newState
             }
 
-            return state
         }
 
         default:

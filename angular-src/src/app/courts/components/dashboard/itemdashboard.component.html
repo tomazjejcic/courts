@@ -2,7 +2,8 @@
 
     <app-event-modal
         #eventModal
-        [item]="courtItem">
+        [item]="courtItem"
+        (newEvent)="eventCreated($event)">
     </app-event-modal>
 
     <div class="panel-heading">
